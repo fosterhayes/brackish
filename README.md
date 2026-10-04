@@ -24,7 +24,6 @@ Open `assets/site.js` and set:
 
 ## Still to add
 
-- Headshot: save as `assets/foster.jpg` and swap it into the marked spot in `about.html`.
 
 ## Brand
 
