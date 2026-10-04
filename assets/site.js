@@ -5,10 +5,10 @@ var BRACKISH = {
   email: "foster@hellobrackish.com",
   // Booking link, e.g. "https://cal.com/hellobrackish/intro".
   // Leave empty and every "Book a call" button goes to the contact page instead.
-  bookingUrl: "",
+  bookingUrl: "https://cal.com/brackish/start",
   // Form endpoint from Formspree (https://formspree.io), e.g. "https://formspree.io/f/abcdwxyz".
   // Leave empty and the form opens the visitor's email app with their message filled in.
-  formEndpoint: ""
+  formEndpoint: "https://formspree.io/f/mbgdrejr"
 };
 
 (function () {

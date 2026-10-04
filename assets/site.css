@@ -230,3 +230,14 @@ section { padding: 96px 0; }
 .site-footer .bottom { padding-top: 24px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } .btn:hover { transform: none; } }
+
+/* work page: multiple case studies */
+.case-list { display: flex; flex-direction: column; gap: 40px; }
+.case-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.dash-tile { background: #FFFFFF; border-radius: 6px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+.dash-tile span { height: 6px; border-radius: 3px; background: #DCD3C2; }
+.dash-tile b { height: 14px; width: 60%; border-radius: 3px; }
+.bar { flex: 1; background: #2F6461; border-radius: 3px 3px 0 0; opacity: .85; }
+.post-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 320px; }
+.post-grid > div { aspect-ratio: 1; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; box-shadow: 0 14px 28px rgba(0,0,0,0.22); }
+.post-grid span { display: block; height: 8px; border-radius: 4px; background: #C9BFA9; }
