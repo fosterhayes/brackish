@@ -241,3 +241,5 @@ section { padding: 96px 0; }
 .post-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 320px; }
 .post-grid > div { aspect-ratio: 1; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; box-shadow: 0 14px 28px rgba(0,0,0,0.22); }
 .post-grid span { display: block; height: 8px; border-radius: 4px; background: #C9BFA9; }
+
+.hero .area { font-family: var(--label); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; color: #A9BC85; }
