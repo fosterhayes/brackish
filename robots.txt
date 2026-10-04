@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /p/
 
 Sitemap: https://hellobrackish.com/sitemap.xml

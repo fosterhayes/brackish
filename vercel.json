@@ -1,4 +1,16 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/p/:slug([a-z0-9-]+)", "destination": "/p/proposal.html" }
+  ],
+  "headers": [
+    { "source": "/p/(.*)", "headers": [
+      { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+      { "key": "Cache-Control", "value": "no-store" }
+    ] }
+  ],
+  "functions": {
+    "api/checkout.js": { "includeFiles": "{data/**,p/data/**}" }
+  }
 }
