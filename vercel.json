@@ -2,15 +2,29 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/p/:slug([a-z0-9-]+)", "destination": "/p/proposal.html" }
+    {
+      "source": "/p/:slug",
+      "destination": "/p/proposal"
+    }
   ],
   "headers": [
-    { "source": "/p/(.*)", "headers": [
-      { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
-      { "key": "Cache-Control", "value": "no-store" }
-    ] }
+    {
+      "source": "/p/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    }
   ],
   "functions": {
-    "api/checkout.js": { "includeFiles": "{data/**,p/data/**}" }
+    "api/checkout.js": {
+      "includeFiles": "{data/**,p/data/**}"
+    }
   }
 }
