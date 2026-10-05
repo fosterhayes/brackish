@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Your proposal | Brackish</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/fraunces.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/dmsans.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/proposal.css">
+</head>
+<body class="proposal">
+<header class="p-header">
+  <div class="wrap">
+    <a href="/" class="brand" aria-label="Brackish home"><img src="/assets/logo.svg" alt="Brackish" width="150" height="46"></a>
+    <button type="button" class="btn btn-outline btn-sm" id="print-btn">Download as PDF</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <p class="eyebrow" id="p-for">Proposal</p>
+      <h1 id="p-headline">Loading your proposal…</h1>
+      <p class="lead" id="p-intro"></p>
+      <p class="p-meta" id="p-meta"></p>
+    </div>
+  </section>
+
+  <nav class="p-steps" aria-label="Proposal steps">
+    <div class="wrap">
+      <ol>
+        <li><button type="button" data-goto="1" aria-current="step"><span>1</span>What I found</button></li>
+        <li><button type="button" data-goto="2"><span>2</span>Your package</button></li>
+        <li><button type="button" data-goto="3"><span>3</span>Review &amp; accept</button></li>
+        <li><button type="button" data-goto="4"><span>4</span>Deposit</button></li>
+      </ol>
+    </div>
+  </nav>
+
+  <div class="wrap p-body">
+    <p class="p-error" id="p-error" hidden>This proposal link isn't valid or has expired. Please email <a href="mailto:foster@hellobrackish.com">foster@hellobrackish.com</a> and I'll send a fresh one.</p>
+
+    <!-- STEP 1 -->
+    <section class="p-step" data-step="1" aria-labelledby="s1-title">
+      <h2 id="s1-title">What I found</h2>
+      <div class="p-grid-2">
+        <div class="card">
+          <p class="eyebrow">Already working well</p>
+          <ul class="checklist" id="p-working"></ul>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Worth fixing</p>
+          <ol class="p-findings" id="p-findings"></ol>
+        </div>
+      </div>
+      <h3 class="p-sub">What it could look like</h3>
+      <div class="p-gallery" id="p-gallery"></div>
+      <div class="card p-outcome">
+        <p class="eyebrow">What you'll get</p>
+        <p id="p-outcome"></p>
+        <p class="muted" id="p-timeline"></p>
+      </div>
+      <div class="p-nav"><span></span><button type="button" class="btn btn-deep" data-goto="2">Build your package →</button></div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="p-step" data-step="2" aria-labelledby="s2-title" hidden>
+      <h2 id="s2-title">Your package</h2>
+      <p class="lead">The recommended work is included. Add anything else that would help; the totals update as you go.</p>
+      <div class="p-pkg">
+        <div class="p-options" id="p-options"></div>
+        <aside class="p-summary card" aria-live="polite">
+          <p class="eyebrow">Summary</p>
+          <div id="p-summary-lines"></div>
+          <div class="p-total"><span>Project total</span><strong id="p-once">$0</strong></div>
+          <div class="p-row muted" id="p-monthly-row" hidden><span>Monthly, after launch</span><span id="p-monthly">$0</span></div>
+          <div class="p-row"><span>Deposit to begin (50%)</span><strong id="p-deposit">$0</strong></div>
+          <p class="muted small">Balance due at launch. Monthly services start the month after launch.</p>
+        </aside>
+      </div>
+      <div class="p-nav"><button type="button" class="btn btn-outline" data-goto="1">← Back</button><button type="button" class="btn btn-deep" data-goto="3">Review &amp; accept →</button></div>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="p-step" data-step="3" aria-labelledby="s3-title" hidden>
+      <h2 id="s3-title">Review &amp; accept</h2>
+      <div class="p-grid-2">
+        <div class="card">
+          <p class="eyebrow">Your package</p>
+          <div id="p-review-lines"></div>
+          <div class="p-total"><span>Project total</span><strong id="p-review-once"></strong></div>
+          <div class="p-row muted" id="p-review-monthly-row" hidden><span>Monthly, after launch</span><span id="p-review-monthly"></span></div>
+          <div class="p-row"><span>Deposit to begin</span><strong id="p-review-deposit"></strong></div>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Key terms</p>
+          <ul class="p-terms">
+            <li>50% deposit to begin, 50% at launch. Invoices due within 15 days.</li>
+            <li>Two rounds of revisions included; extra work is $75/hour, approved by you first.</li>
+            <li>You provide content and logins within 10 business days of request.</li>
+            <li>You own your website, accounts and final files once paid in full.</li>
+            <li>Monthly services have a 3-month minimum, then 30 days' notice to cancel.</li>
+          </ul>
+          <details class="p-agreement">
+            <summary>Read the full service agreement</summary>
+            <div id="p-agreement-text"></div>
+          </details>
+        </div>
+      </div>
+
+      <form class="form p-accept" id="accept-form" novalidate>
+        <p class="eyebrow">Accept this proposal</p>
+        <div class="row-2">
+          <div class="field"><label for="a-name">Your full name</label><input id="a-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="a-title">Your title</label><input id="a-title" name="title" autocomplete="organization-title" required></div>
+        </div>
+        <div class="field"><label for="a-email">Email for invoices and updates</label><input id="a-email" name="email" type="email" autocomplete="email" required></div>
+        <label class="p-check"><input type="checkbox" id="a-agree" name="agree" required> <span>I'm authorized to approve this for <b id="a-org"></b>, and I agree to the proposal and the service agreement above. Typing my name is my electronic signature.</span></label>
+        <div class="hp" aria-hidden="true"><label for="a-website">Leave this empty</label><input id="a-website" name="company_website" tabindex="-1" autocomplete="off"></div>
+        <div class="p-nav"><button type="button" class="btn btn-outline" data-goto="2">← Back</button><button type="submit" class="btn btn-gold">Accept proposal</button></div>
+        <p class="form-status" id="accept-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- STEP 4 -->
+    <section class="p-step" data-step="4" aria-labelledby="s4-title" hidden>
+      <h2 id="s4-title">Deposit</h2>
+      <div class="card p-pay" id="p-pay-ready">
+        <p class="eyebrow" id="p-accepted-note">Proposal accepted. Thank you!</p>
+        <p class="p-pay-amount" id="p-pay-amount"></p>
+        <p>The 50% deposit reserves your spot on the calendar. Choose whichever way is easiest for you, and include <b id="p-pay-memo"></b> in the memo.</p>
+        <div class="p-methods" id="p-methods" role="radiogroup" aria-label="Payment method"></div>
+        <button type="button" class="btn btn-gold" id="sent-btn" disabled>I've sent the deposit</button>
+        <p class="form-status" id="pay-status" role="status" aria-live="polite"></p>
+        <p class="muted small">Need an invoice for your records or a different way to pay? Email <a href="mailto:foster@hellobrackish.com">foster@hellobrackish.com</a> and I'll send one.</p>
+      </div>
+      <div class="card p-pay" id="p-pay-locked">
+        <p>Accept the proposal in step 3 first, then your deposit button will appear here.</p>
+        <button type="button" class="btn btn-outline" data-goto="3">Go to step 3</button>
+      </div>
+      <div class="card p-pay p-paid" id="p-paid" hidden>
+        <p class="eyebrow">Thank you!</p>
+        <h3>Your deposit is on its way.</h3>
+        <p>I'll email you as soon as it arrives, usually within one business day, to confirm and schedule our kickoff.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="p-footer">
+  <div class="wrap">
+    <img src="/assets/foster.jpg" alt="Foster Hayes" width="64" height="64">
+    <div>
+      <strong>Questions? Just reply or call.</strong>
+      <span>Foster Hayes, Founder · <a href="mailto:foster@hellobrackish.com">foster@hellobrackish.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<template id="agreement-template">
+  <p>This agreement is between <b>Brackish LLC</b> ("Brackish"), a Georgia limited liability company, and <b data-org></b> ("Client"), effective on the date Client accepts the proposal online.</p>
+  <h4>1. Services</h4><p>Brackish will provide the services in Client's accepted package on this proposal page, which is part of this agreement. Work not listed is outside the scope of this agreement and will be quoted separately before it begins.</p>
+  <h4>2. Fees and payment</h4><p>Projects: 50% deposit is due before work begins; the remaining 50% is due at launch or delivery, before the work is made public. Monthly services are billed on the 1st of each month, in advance. Additional work is $75 per hour, approved by Client in writing before it starts. Invoices are due within 15 days; Brackish may pause work on accounts more than 15 days past due. Third-party costs such as hosting, domains, software, stock photos and plugins are paid by Client directly, at cost.</p>
+  <h4>3. Client responsibilities</h4><p>Client will provide text, photos, logos, account logins and feedback within 10 business days of request. If materials or feedback are late, the project may pause and move to Brackish's next available opening. Client confirms it has the right to use any materials it provides.</p>
+  <h4>4. Revisions and changes</h4><p>Each project includes two rounds of revisions. Further revisions, or changes to the agreed scope, will be quoted and approved in writing before work continues.</p>
+  <h4>5. Ownership</h4><p>Once paid in full, Client owns the final website content, designs and files created specifically for Client, to the extent the law allows. Elements made with AI assistance may not qualify for copyright protection on their own, and Brackish makes no promise that they do. Client's domain, hosting, social media and other accounts are always held in Client's name; Brackish is added as a user, never as the owner. Brackish keeps ownership of its general know-how, reusable code, templates and tools, and grants Client a permanent license to use them as part of the delivered work. Brackish may show the finished work in its portfolio unless Client asks it not to in writing.</p>
+  <h4>6. Use of AI tools</h4><p>Brackish uses AI tools for writing, design, coding and images to help research, draft, build and maintain Client's work, and Client agrees to this use. Brackish personally reviews and edits everything before it is delivered or published, and is responsible for the work just as if it were made without these tools. Brackish uses business accounts that do not train AI models on Client's information, and will not enter donor, customer, staff or other personal data, or passwords, into any AI tool without Client's written permission. Brackish will not use AI to create images of real people, places or events and present them as real. Client may ask in writing that a specific piece of work be made without AI; this may affect the timeline or price, which Brackish will confirm first. For AI implementation projects, Brackish will also explain in writing what each tool does and what information it can access; Client decides what data is shared with any AI tool and is responsible for its own privacy obligations to donors, customers and staff.</p>
+  <h4>7. Monthly services and cancellation</h4><p>Monthly services have a 3-month minimum. After that, either party may cancel with 30 days' written notice (email is fine). Fees already paid for the current month are not refunded.</p>
+  <h4>8. Ending a project early</h4><p>Either party may end a project with written notice. Client pays for work completed up to that date; the deposit covers work already done and is non-refundable once work has started. Brackish will hand over all finished files and access that Client has paid for.</p>
+  <h4>9. Confidentiality</h4><p>Brackish will keep Client's non-public information, passwords and data confidential and use them only to perform the work.</p>
+  <h4>10. Warranty and liability</h4><p>Brackish will perform the work professionally and fix any defects reported within 30 days of launch at no charge. Brackish is not responsible for problems caused by third-party services, hosting providers, plugins, or changes made by others after launch. Brackish's total liability under this agreement is limited to the fees Client paid under it.</p>
+  <h4>11. Communication</h4><p>Brackish responds within one business day, Monday through Friday. Brackish is an independent contractor, not an employee of Client.</p>
+  <h4>12. General</h4><p>This agreement, together with the accepted proposal, is the entire agreement between the parties. It is governed by the laws of the State of Georgia. Changes must be in writing and agreed by both parties.</p>
+</template>
+
+<script src="/assets/pricing.js"></script>
+<script src="/assets/proposal.js"></script>
+</body>
+</html>

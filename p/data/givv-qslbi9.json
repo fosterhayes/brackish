@@ -1,0 +1,69 @@
+{
+  "slug": "givv-qslbi9",
+  "org": "Golden Isles Veterans Village",
+  "greeting": "Hi there",
+  "preparedOn": "October 4, 2026",
+  "validUntil": "November 3, 2026",
+  "headline": "A website as solid as the village you built.",
+  "intro": "Twenty-nine tiny homes, a community center and a case manager on site: the Village is working proof that a hand up works. The website should make it just as easy for a veteran to apply and for a neighbor to give. Here's what I found, what a new site would look like, and what it would cost.",
+  "working": [
+    "A concrete story: 29 tiny homes, 9 of them ADA-accessible",
+    "Named staff and a full board of directors",
+    "Many ways to give: PayPal, walkway bricks and Amazon wish lists",
+    "A signature fundraiser in the Golden Isles Liberty Ride"
+  ],
+  "findings": [
+    {
+      "title": "Veterans can't find how to apply.",
+      "detail": "Nothing on the homepage, The Veterans Village page or About Us explains who qualifies or how a veteran, family member or caseworker can apply."
+    },
+    {
+      "title": "A past event is listed as upcoming.",
+      "detail": "The Events page still shows a November 15, 2025 event under \"Upcoming Events.\""
+    },
+    {
+      "title": "The Community Center link goes to the wrong page.",
+      "detail": "In the footer, \"Community Center\" opens the Commemorative Walkway page."
+    },
+    {
+      "title": "Donations run through a Gmail address, with a typo.",
+      "detail": "The PayPal button sends gifts to givvi31520@gmail.com, and the message donors see reads \"Thank you for suppporting GIVVI.\""
+    },
+    {
+      "title": "Small errors add up.",
+      "detail": "The homepage says the Village helps \"veterans suffering from homeless,\" and the case manager's name is spelled \"Wadell\" on one page and \"Waddell\" on another."
+    }
+  ],
+  "images": [
+    {
+      "src": "/p/img/givv-desktop.jpg",
+      "alt": "Concept of a new Golden Isles Veterans Village homepage on a laptop",
+      "caption": "Homepage concept. Donating and applying are front and center, with a clear path for veterans, supporters and volunteers. Highlighted items are details I'd confirm with you."
+    },
+    {
+      "src": "/p/img/givv-phone.jpg",
+      "alt": "The same homepage concept on a phone",
+      "caption": "The same page on a phone, where most visitors will see it.",
+      "phone": true
+    }
+  ],
+  "outcome": "A new site where veterans and caseworkers can learn how to apply in one click, donors give securely in the Village's name, and staff can keep events current themselves. Built on a brand that feels sturdy, American and proud, without the clichés.",
+  "timeline": "About 3 to 4 weeks from kickoff to launch, once we have your logo, photos and application details.",
+  "package": [
+    {
+      "id": "website-standard",
+      "locked": true,
+      "note": "A new site of up to 10 pages: home, the village, how to apply, ways to give, get involved, events, news, about and contact. Includes help writing page copy, donations set up in the Village's name, and setup so your staff can edit."
+    }
+  ],
+  "addons": [
+    {
+      "id": "digital-presence",
+      "note": "Make sure your Google and Apple Maps listings show the right address, hours and photos, plus a review link for supporters."
+    },
+    {
+      "id": "care-plan",
+      "note": "Updates, backups and an hour of edits each month, like posting the next Liberty Ride."
+    }
+  ]
+}
