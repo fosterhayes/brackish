@@ -71,18 +71,33 @@ var BRACKISH = {
       return;
     }
 
+    if (!String(data.get("name") || "").trim() || !/\S+@\S+\.\S+/.test(String(data.get("email") || "")) || !String(data.get("message") || "").trim()) {
+      status.textContent = "Please add your name, a valid email and a short message.";
+      status.classList.add("err");
+      return;
+    }
+    data.delete("company_website");
+    data.append("_subject", "New inquiry from " + data.get("name") + " (hellobrackish.com)");
     var btn = form.querySelector("button[type=submit]");
     btn.disabled = true;
     status.textContent = "Sending…";
     fetch(BRACKISH.formEndpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
       .then(function (r) {
-        if (!r.ok) throw new Error("bad response");
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (!r.ok) {
+            var msg = (j && j.errors && j.errors.map(function (x) { return x.message; }).join("; ")) || (j && j.error) || ("status " + r.status);
+            throw new Error(msg);
+          }
+        });
+      })
+      .then(function () {
         form.reset();
         status.textContent = "Thanks! Your message is on its way. Expect a reply within one business day.";
         status.classList.add("ok");
       })
-      .catch(function () {
-        status.textContent = "Something went wrong. Please email " + BRACKISH.email + " directly.";
+      .catch(function (err) {
+        if (window.console) console.warn("Contact form error:", err && err.message);
+        status.textContent = "Something went wrong. Please email " + BRACKISH.email + " directly. (Details: " + ((err && err.message) || "network error") + ")";
         status.classList.add("err");
       })
       .finally(function () { btn.disabled = false; });

@@ -15,6 +15,14 @@
     get: function (k) { try { return JSON.parse(sessionStorage.getItem("brk-" + slug + "-" + k)); } catch (e) { return null; } },
     set: function (k, v) { try { sessionStorage.setItem("brk-" + slug + "-" + k, JSON.stringify(v)); } catch (e) {} }
   };
+  function postForm(data) {
+    return fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (!r.ok) throw new Error((j && j.errors && j.errors.map(function (x) { return x.message; }).join("; ")) || (j && j.error) || ("status " + r.status));
+        });
+      });
+  }
   function el(tag, attrs, text) {
     var e = document.createElement(tag);
     Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); });
@@ -201,15 +209,14 @@
     data.append("agreed_to_terms", "yes (typed name + checkbox)");
     data.append("accepted_at", new Date().toISOString());
     data.append("page", location.href);
-    fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
-      .then(function (r) { if (!r.ok) throw 0; })
+    postForm(data)
       .then(function () {
         accepted = true; store.set("accepted", true);
         store.set("signer", { name: f.name.value.trim(), email: f.email.value.trim() });
         status.textContent = ""; update(); show(4);
       })
-      .catch(function () {
-        status.textContent = "Something went wrong saving your acceptance. Please try again, or email foster@hellobrackish.com.";
+      .catch(function (err) {
+        status.textContent = "Something went wrong saving your acceptance. Please try again, or email foster@hellobrackish.com. (Details: " + ((err && err.message) || "network error") + ")";
         status.classList.add("err");
       })
       .finally(function () { btn.disabled = false; });
@@ -231,10 +238,10 @@
     data.append("email", signer.email || "");
     if (signer.email) data.append("_replyto", signer.email);
     data.append("sent_at", new Date().toISOString());
-    fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
-      .then(function (r) { if (!r.ok) throw 0; store.set("sent", method); showSent(); })
-      .catch(function () {
-        status.textContent = "That didn't go through. Please try again, or email foster@hellobrackish.com to let me know it's on the way.";
+    postForm(data)
+      .then(function () { store.set("sent", method); showSent(); })
+      .catch(function (err) {
+        status.textContent = "That didn't go through. Please try again, or email foster@hellobrackish.com to let me know it's on the way. (Details: " + ((err && err.message) || "network error") + ")";
         status.classList.add("err"); btn.disabled = false;
       });
   });
