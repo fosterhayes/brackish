@@ -1,0 +1,8 @@
+{
+  "_help": "Payment options shown on proposal pages. Leave a value empty (\"\") to hide that option.",
+  "venmo": "",
+  "cashapp": "",
+  "zelle": "",
+  "checkPayableTo": "Brackish LLC",
+  "checkMailTo": ""
+}

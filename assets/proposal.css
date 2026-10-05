@@ -87,3 +87,13 @@
   .card, .p-option { box-shadow: none; border: 1px solid var(--line); }
   body { background: #fff; }
 }
+
+.p-methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%; }
+@media (max-width: 560px) { .p-methods { grid-template-columns: 1fr; } }
+.p-method { display: flex; gap: 12px; align-items: flex-start; background: var(--oyster); border: 2px solid transparent; border-radius: 14px; padding: 16px 18px; cursor: pointer; }
+.p-method:has(input:checked) { border-color: var(--teal); background: var(--white); }
+.p-method input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--teal); flex: 0 0 auto; }
+.p-method-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.p-method-body strong { font-family: var(--label); font-weight: 800; color: var(--deep); }
+.p-method-body span { color: var(--ink-soft); font-size: 0.95rem; overflow-wrap: anywhere; }
+.p-method-body a { font-weight: 700; }

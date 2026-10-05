@@ -2,7 +2,7 @@
   var FORM_ENDPOINT = "https://formspree.io/f/mbgdrejr";
   var slug = (location.pathname.match(/\/p\/([a-z0-9-]+)/) || [])[1];
   var params = new URLSearchParams(location.search);
-  var catalog = null, proposal = null, current = null, selected = {};
+  var catalog = null, proposal = null, current = null, selected = {}, payment = {}, method = null;
   var accepted = false;
 
   var $ = function (id) { return document.getElementById(id); };
@@ -33,9 +33,10 @@
 
   Promise.all([
     fetch("/data/prices.json").then(function (r) { if (!r.ok) throw 0; return r.json(); }),
-    fetch("/p/data/" + slug + ".json").then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    fetch("/p/data/" + slug + ".json").then(function (r) { if (!r.ok) throw 0; return r.json(); }),
+    fetch("/data/payment.json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })
   ]).then(function (res) {
-    catalog = res[0]; proposal = res[1];
+    catalog = res[0]; proposal = res[1]; payment = res[2] || {};
     render();
   }).catch(fail);
 
@@ -91,12 +92,39 @@
       opts.appendChild(label);
     });
 
+    renderMethods();
     accepted = !!store.get("accepted");
     update();
     var start = parseInt(params.get("step"), 10);
-    if (params.get("paid") === "1") { accepted = true; show(4); $("p-paid").hidden = false; $("p-pay-ready").hidden = true; $("p-pay-locked").hidden = true; }
+    if (store.get("sent")) { accepted = true; show(4, true); showSent(); }
     else show(start >= 1 && start <= 4 ? start : 1, true);
   }
+
+  function renderMethods() {
+    var memo = proposal.org + " deposit";
+    $("p-pay-memo").textContent = memo;
+    var clean = function (v) { return String(v || "").trim(); };
+    var venmo = clean(payment.venmo).replace(/^@/, ""), cash = clean(payment.cashapp).replace(/^\$/, "");
+    var list = [];
+    if (venmo) list.push({ id: "Venmo", detail: "@" + venmo, href: "https://venmo.com/u/" + encodeURIComponent(venmo) });
+    if (cash) list.push({ id: "Cash App", detail: "$" + cash, href: "https://cash.app/$" + encodeURIComponent(cash) });
+    if (clean(payment.zelle)) list.push({ id: "Zelle", detail: "Send to " + clean(payment.zelle) + " from your bank's app" });
+    if (clean(payment.checkPayableTo)) list.push({ id: "Check", detail: "Payable to " + clean(payment.checkPayableTo) + ". " + (clean(payment.checkMailTo) ? "Mail to " + clean(payment.checkMailTo) + "." : "I'll email you the mailing address.") });
+    var box = $("p-methods");
+    list.forEach(function (m) {
+      var label = el("label", { "class": "p-method" });
+      var r = el("input", { type: "radio", name: "pay-method", value: m.id });
+      r.addEventListener("change", function () { method = m.id; $("sent-btn").disabled = false; var st = $("pay-status"); st.textContent = ""; st.className = "form-status"; });
+      var body = el("span", { "class": "p-method-body" });
+      body.appendChild(el("strong", {}, m.id));
+      var d = el("span", {}, m.detail + " ");
+      if (m.href) d.appendChild(el("a", { href: m.href, target: "_blank", rel: "noopener" }, "Open " + m.id));
+      body.appendChild(d);
+      label.appendChild(r); label.appendChild(body); box.appendChild(label);
+    });
+  }
+
+  function showSent() { $("p-paid").hidden = false; $("p-pay-ready").hidden = true; $("p-pay-locked").hidden = true; }
 
   function linesInto(container, q) {
     container.textContent = "";
@@ -122,6 +150,7 @@
     $("p-monthly-row").hidden = $("p-review-monthly-row").hidden = current.perMonth === 0;
     $("p-pay-amount").textContent = money(current.deposit) + " deposit";
     $("p-pay-ready").hidden = !accepted; $("p-pay-locked").hidden = accepted;
+    if (store.get("sent")) showSent();
   }
 
   function show(n, silent) {
@@ -186,23 +215,27 @@
       .finally(function () { btn.disabled = false; });
   });
 
-  // pay
-  $("pay-btn").addEventListener("click", function () {
-    var btn = this, status = $("pay-status");
-    var signer = store.get("signer") || {};
-    btn.disabled = true; status.className = "form-status"; status.textContent = "Opening secure checkout…";
-    fetch("/api/checkout", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ slug: slug, items: current.items, name: signer.name || "", email: signer.email || "" })
-    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
-      .then(function (res) {
-        if (res.ok && res.j.url) { location.href = res.j.url; return; }
-        throw res.j;
-      })
-      .catch(function (err) {
-        if (err && err.error) console.warn("Deposit checkout unavailable:", err);
-        status.textContent = "Online payment isn't available right now. No problem: I'll email your deposit invoice within one business day." + (err && err.error ? " (ref: " + err.error + (err.stripeCode ? "/" + err.stripeCode : "") + ")" : "");
-        status.classList.add("ok"); btn.disabled = false;
+  // deposit sent
+  $("sent-btn").addEventListener("click", function () {
+    if (!method) return;
+    var btn = this, status = $("pay-status"), signer = store.get("signer") || {};
+    btn.disabled = true; status.className = "form-status"; status.textContent = "Letting Foster know…";
+    var data = new FormData();
+    data.append("_subject", "Deposit sent (" + method + "): " + proposal.org);
+    data.append("type", "deposit-sent");
+    data.append("organization", proposal.org);
+    data.append("proposal", slug);
+    data.append("method", method);
+    data.append("deposit", money(current.deposit));
+    data.append("name", signer.name || "");
+    data.append("email", signer.email || "");
+    if (signer.email) data.append("_replyto", signer.email);
+    data.append("sent_at", new Date().toISOString());
+    fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
+      .then(function (r) { if (!r.ok) throw 0; store.set("sent", method); showSent(); })
+      .catch(function () {
+        status.textContent = "That didn't go through. Please try again, or email foster@hellobrackish.com to let me know it's on the way.";
+        status.classList.add("err"); btn.disabled = false;
       });
   });
 })();

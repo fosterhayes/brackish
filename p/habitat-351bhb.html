@@ -132,19 +132,20 @@
       <div class="card p-pay" id="p-pay-ready">
         <p class="eyebrow" id="p-accepted-note">Proposal accepted. Thank you!</p>
         <p class="p-pay-amount" id="p-pay-amount"></p>
-        <p>Pay the 50% deposit securely by card through Stripe to reserve your spot on the calendar. You'll get an emailed receipt right away.</p>
-        <button type="button" class="btn btn-gold" id="pay-btn">Pay deposit securely</button>
+        <p>The 50% deposit reserves your spot on the calendar. Choose whichever way is easiest for you, and include <b id="p-pay-memo"></b> in the memo.</p>
+        <div class="p-methods" id="p-methods" role="radiogroup" aria-label="Payment method"></div>
+        <button type="button" class="btn btn-gold" id="sent-btn" disabled>I've sent the deposit</button>
         <p class="form-status" id="pay-status" role="status" aria-live="polite"></p>
-        <p class="muted small">Prefer to pay by check? Make it payable to Brackish LLC and email <a href="mailto:foster@hellobrackish.com">foster@hellobrackish.com</a> for the mailing address.</p>
+        <p class="muted small">Need an invoice for your records or a different way to pay? Email <a href="mailto:foster@hellobrackish.com">foster@hellobrackish.com</a> and I'll send one.</p>
       </div>
       <div class="card p-pay" id="p-pay-locked">
         <p>Accept the proposal in step 3 first, then your deposit button will appear here.</p>
         <button type="button" class="btn btn-outline" data-goto="3">Go to step 3</button>
       </div>
       <div class="card p-pay p-paid" id="p-paid" hidden>
-        <p class="eyebrow">Deposit received</p>
-        <h3>You're on the calendar.</h3>
-        <p>Thank you! I'll email you within one business day to schedule our kickoff and gather your photos and logins.</p>
+        <p class="eyebrow">Thank you!</p>
+        <h3>Your deposit is on its way.</h3>
+        <p>I'll email you as soon as it arrives, usually within one business day, to confirm and schedule our kickoff.</p>
       </div>
     </section>
   </div>
@@ -166,8 +167,8 @@
   <h4>2. Fees and payment</h4><p>Projects: 50% deposit is due before work begins; the remaining 50% is due at launch or delivery, before the work is made public. Monthly services are billed on the 1st of each month, in advance. Additional work is $75 per hour, approved by Client in writing before it starts. Invoices are due within 15 days; Brackish may pause work on accounts more than 15 days past due. Third-party costs such as hosting, domains, software, stock photos and plugins are paid by Client directly, at cost.</p>
   <h4>3. Client responsibilities</h4><p>Client will provide text, photos, logos, account logins and feedback within 10 business days of request. If materials or feedback are late, the project may pause and move to Brackish's next available opening. Client confirms it has the right to use any materials it provides.</p>
   <h4>4. Revisions and changes</h4><p>Each project includes two rounds of revisions. Further revisions, or changes to the agreed scope, will be quoted and approved in writing before work continues.</p>
-  <h4>5. Ownership</h4><p>Once paid in full, Client owns the final website content, designs and files created specifically for Client. Client's domain, hosting, social media and other accounts are always held in Client's name; Brackish is added as a user, never as the owner. Brackish keeps ownership of its general know-how, reusable code, templates and tools, and grants Client a permanent license to use them as part of the delivered work. Brackish may show the finished work in its portfolio unless Client asks it not to in writing.</p>
-  <h4>6. AI tools and data</h4><p>For AI projects, Brackish will explain in writing what each tool does and what information it can access. Client decides what data is shared with any AI tool and is responsible for its own privacy obligations to donors, customers and staff.</p>
+  <h4>5. Ownership</h4><p>Once paid in full, Client owns the final website content, designs and files created specifically for Client, to the extent the law allows. Elements made with AI assistance may not qualify for copyright protection on their own, and Brackish makes no promise that they do. Client's domain, hosting, social media and other accounts are always held in Client's name; Brackish is added as a user, never as the owner. Brackish keeps ownership of its general know-how, reusable code, templates and tools, and grants Client a permanent license to use them as part of the delivered work. Brackish may show the finished work in its portfolio unless Client asks it not to in writing.</p>
+  <h4>6. Use of AI tools</h4><p>Brackish uses AI tools for writing, design, coding and images to help research, draft, build and maintain Client's work, and Client agrees to this use. Brackish personally reviews and edits everything before it is delivered or published, and is responsible for the work just as if it were made without these tools. Brackish uses business accounts that do not train AI models on Client's information, and will not enter donor, customer, staff or other personal data, or passwords, into any AI tool without Client's written permission. Brackish will not use AI to create images of real people, places or events and present them as real. Client may ask in writing that a specific piece of work be made without AI; this may affect the timeline or price, which Brackish will confirm first. For AI implementation projects, Brackish will also explain in writing what each tool does and what information it can access; Client decides what data is shared with any AI tool and is responsible for its own privacy obligations to donors, customers and staff.</p>
   <h4>7. Monthly services and cancellation</h4><p>Monthly services have a 3-month minimum. After that, either party may cancel with 30 days' written notice (email is fine). Fees already paid for the current month are not refunded.</p>
   <h4>8. Ending a project early</h4><p>Either party may end a project with written notice. Client pays for work completed up to that date; the deposit covers work already done and is non-refundable once work has started. Brackish will hand over all finished files and access that Client has paid for.</p>
   <h4>9. Confidentiality</h4><p>Brackish will keep Client's non-public information, passwords and data confidential and use them only to perform the work.</p>

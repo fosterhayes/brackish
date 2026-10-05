@@ -38,3 +38,6 @@ Each prospect gets a private page at `/p/<slug>`, for example `/p/habitat-351bhb
 - **Acceptance** is sent to Formspree with the signer's name, title, email, package, totals and timestamp.
 - **Deposits** go through Stripe Checkout via `api/checkout.js`, which recalculates the amount on the server. It needs the `STRIPE_SECRET_KEY` environment variable in Vercel. Without it, the page tells the client you'll email an invoice instead.
 - Proposal pages are hidden from search engines (`noindex` header, `robots.txt`).
+
+### Deposit payment options
+Proposal pages show the payment options listed in `data/payment.json` (Venmo, Cash App, Zelle, check). Leave a value empty to hide that option. When a client clicks "I've sent the deposit," you get a Formspree email naming the method they used. The Stripe checkout code in `api/checkout.js` stays in the repo but isn't used right now.
