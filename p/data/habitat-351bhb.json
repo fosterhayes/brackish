@@ -13,23 +13,58 @@
     "An online volunteer waiver"
   ],
   "findings": [
-    { "title": "Template text is showing.", "detail": "The homepage volunteer section and FAQ answers still contain \"Lorem ipsum\" placeholder text." },
-    { "title": "Another affiliate's name appears.", "detail": "The newsletter sign-up mentions \"Habitat for Humanity East Central Ohio.\"" },
-    { "title": "ReStore shoppers can't find your hours.", "detail": "The ReStore page lists none, shows two different unit numbers, and one line is cut off." },
-    { "title": "News has no dates,", "detail": "so visitors can't tell whether Build Week is coming up or already happened." },
-    { "title": "Volunteering takes an email or phone call.", "detail": "A simple online sign-up for Wednesday and Saturday build days would fill more spots with less staff time." }
+    {
+      "title": "Template text is showing.",
+      "detail": "Open any question in the homepage FAQ and the answer is Latin placeholder text (\"Quis vel eros donec ac odio tempor…\") left over from the website template."
+    },
+    {
+      "title": "Another affiliate's name appears.",
+      "detail": "The \"Don't Miss Out on the Good Stuff\" email sign-up near the bottom of the homepage invites visitors to get messages \"from Habitat for Humanity East Central Ohio.\""
+    },
+    {
+      "title": "ReStore shoppers can't find your hours.",
+      "detail": "The ReStore page lists none, shows two different unit numbers, and one line is cut off."
+    },
+    {
+      "title": "News has no dates,",
+      "detail": "so visitors can't tell whether Build Week is coming up or already happened."
+    },
+    {
+      "title": "Volunteering takes an email or phone call.",
+      "detail": "A simple online sign-up for Wednesday and Saturday build days would fill more spots with less staff time."
+    }
   ],
   "images": [
-    { "src": "/p/img/habitat-desktop.jpg", "alt": "Concept of a refreshed Habitat for Humanity of Glynn County homepage on a laptop", "caption": "Homepage concept. Donate, volunteer, ReStore and homeownership are each one click away." },
-    { "src": "/p/img/habitat-phone.jpg", "alt": "The same homepage concept on a phone", "caption": "The same page on a phone, where most visitors will see it.", "phone": true }
+    {
+      "src": "/p/img/habitat-desktop.jpg",
+      "alt": "Concept of a refreshed Habitat for Humanity of Glynn County homepage on a laptop",
+      "caption": "Homepage concept. Donate, volunteer, ReStore and homeownership are each one click away."
+    },
+    {
+      "src": "/p/img/habitat-phone.jpg",
+      "alt": "The same homepage concept on a phone",
+      "caption": "The same page on a phone, where most visitors will see it.",
+      "phone": true
+    }
   ],
   "outcome": "A homepage where donating, volunteering and finding the ReStore each take one click. Clean, accurate copy throughout, dated news, and an online build-day sign-up. Built on your current WordPress site, so your team keeps editing it the way it does today.",
   "timeline": "About 2 weeks from kickoff to launch, once we have your photos and logins.",
   "package": [
-    { "id": "website-refresh", "price": 1250, "locked": true, "note": "Fixes every issue above, redesigned homepage, ReStore page with hours, dated news, online build-day sign-up." }
+    {
+      "id": "website-refresh",
+      "price": 1250,
+      "locked": true,
+      "note": "Fixes every issue above, redesigned homepage, ReStore page with hours, dated news, online build-day sign-up."
+    }
   ],
   "addons": [
-    { "id": "digital-presence", "note": "Make sure your Google listing shows ReStore hours and gathers reviews." },
-    { "id": "care-plan", "note": "Updates, backups and an hour of edits each month after launch." }
+    {
+      "id": "digital-presence",
+      "note": "Make sure your Google listing shows ReStore hours and gathers reviews."
+    },
+    {
+      "id": "care-plan",
+      "note": "Updates, backups and an hour of edits each month after launch."
+    }
   ]
 }
