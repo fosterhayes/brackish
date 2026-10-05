@@ -1,8 +1,8 @@
 {
   "_help": "Payment options shown on proposal pages. Leave a value empty (\"\") to hide that option.",
-  "venmo": "",
-  "cashapp": "",
-  "zelle": "",
+  "venmo": "hellobrackish",
+  "cashapp": "hellobrackish",
+  "zelle": "(678) 584-3015",
   "checkPayableTo": "Brackish LLC",
   "checkMailTo": ""
 }
