@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Email Signature | Brackish</title>
+<link rel="icon" href="/assets/mark.svg">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  body { background: var(--oyster); }
+  .sig-wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; display: flex; flex-direction: column; gap: 28px; }
+  .sig-card { background: #FFFFFF; border-radius: 18px; padding: 32px; box-shadow: 0 18px 36px rgba(18,40,58,0.10); overflow-x: auto; }
+  .sig-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .sig-steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; color: var(--ink-soft); }
+  .sig-steps b { color: var(--deep); }
+  .sig-status { font-family: var(--label); font-weight: 700; color: var(--teal); min-height: 1.4em; }
+  h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
+  h2 { font-size: 1.3rem; }
+</style>
+</head>
+<body>
+<main class="sig-wrap">
+  <div>
+    <p class="eyebrow">For Foster</p>
+    <h1>Your email signature</h1>
+  </div>
+
+  <div class="sig-card">
+    <div id="sig"><table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#12283A;">
+  <tr>
+    <td valign="middle" style="padding:0 16px 0 0;">
+      <a href="https://hellobrackish.com" style="text-decoration:none;"><img src="https://hellobrackish.com/assets/email/mark.png" width="64" height="64" alt="Brackish" style="display:block;width:64px;height:64px;border:0;"></a>
+    </td>
+    <td valign="middle" style="padding:2px 0 2px 16px;border-left:2px solid #C49A5A;">
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:24px;font-weight:bold;color:#12283A;">Foster Hayes</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px;color:#2F6461;font-weight:bold;">Founder, Brackish</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#5B4636;">Websites, social media &amp; AI for the Golden Isles</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:22px;padding-top:4px;">
+        <a href="https://hellobrackish.com" style="color:#2F6461;text-decoration:none;font-weight:bold;">hellobrackish.com</a>
+        <span style="color:#C49A5A;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a href="https://instagram.com/hellobrackish" style="color:#2F6461;text-decoration:none;font-weight:bold;">Instagram @hellobrackish</a>
+      </div>
+    </td>
+  </tr>
+</table></div>
+  </div>
+
+  <div class="sig-actions">
+    <button type="button" class="btn btn-gold" id="copy-btn">Copy signature</button>
+    <span class="sig-status" id="copy-status" role="status" aria-live="polite"></span>
+  </div>
+
+  <div>
+    <h2>Add it in Gmail</h2>
+    <ol class="sig-steps">
+      <li>On a computer, tap <b>Copy signature</b> above.</li>
+      <li>In Gmail, open <b>Settings (gear) → See all settings → General → Signature</b>.</li>
+      <li>Click <b>Create new</b>, name it "Brackish," and paste into the box.</li>
+      <li>Under <b>Signature defaults</b>, choose it for new emails and replies, then <b>Save Changes</b> at the bottom.</li>
+    </ol>
+  </div>
+  <div>
+    <h2>Add it in Outlook or Apple Mail</h2>
+    <ol class="sig-steps">
+      <li><b>Outlook:</b> Settings → Mail → Compose and reply → Email signature, then paste.</li>
+      <li><b>Apple Mail (Mac):</b> Mail → Settings → Signatures, click +, paste, and uncheck "Always match my default message font."</li>
+      <li><b>iPhone Mail</b> strips formatting from pasted signatures, so set it on your computer and send from there for prospect emails.</li>
+    </ol>
+  </div>
+</main>
+<script>
+document.getElementById("copy-btn").addEventListener("click", function () {
+  var node = document.getElementById("sig"), status = document.getElementById("copy-status");
+  var html = node.innerHTML, text = "Foster Hayes\nFounder, Brackish\nWebsites, social media & AI for the Golden Isles\nhellobrackish.com | Instagram @hellobrackish";
+  function fallback() {
+    var range = document.createRange(); range.selectNodeContents(node);
+    var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+    sel.removeAllRanges();
+    status.textContent = ok ? "Copied. Now paste it into your signature settings." : "Select the signature above and copy it manually.";
+  }
+  if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+    navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }), "text/plain": new Blob([text], { type: "text/plain" }) })])
+      .then(function () { status.textContent = "Copied. Now paste it into your signature settings."; }, fallback);
+  } else fallback();
+});
+</script>
+</body>
+</html>
