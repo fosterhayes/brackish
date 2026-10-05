@@ -1,0 +1,69 @@
+{
+  "slug": "share-7rw0jt",
+  "org": "SHARE of Coastal Georgia",
+  "greeting": "Hi there",
+  "preparedOn": "October 4, 2026",
+  "validUntil": "November 3, 2026",
+  "headline": "Your work deserves a website that keeps up with it.",
+  "intro": "SHARE helps children and adults with disabilities every day, and just earned a 2025 McCloud Community Impact Award. The website hasn't kept pace: it still shows an old DEAR schedule and an ad for the website builder. Here's what I found, what a new site would look like, and what it would cost.",
+  "working": [
+    "A clear mission and three well-defined programs",
+    "\"No one is turned away for inability to pay,\" stated plainly",
+    "Online donations through PayPal already work",
+    "Named, credentialed speech staff and a clear insurance list"
+  ],
+  "findings": [
+    {
+      "title": "The DEAR schedule is two school years old.",
+      "detail": "The DEAR Program page lists the 2024–2025 school year (Aug. 12, 2024 to May 22, 2025), so families can't tell whether the program is running now or how to enroll this year."
+    },
+    {
+      "title": "Every page carries an ad for Weebly.",
+      "detail": "The footer reads \"Create your own unique website with customizable templates. Get Started,\" the free-plan banner from your website builder."
+    },
+    {
+      "title": "Two menu items lead to empty pages.",
+      "detail": "\"Coming Soon\" only says \"Exciting Things to Come,\" and News and Info says \"Currently updating our news and info....\""
+    },
+    {
+      "title": "Hours and email are hard to find.",
+      "detail": "No page lists your hours, and your email address appears only on the Contact page. The contact form also requires a phone number and a marketing checkbox before anyone can send a question."
+    },
+    {
+      "title": "The Extended Day Program has no description.",
+      "detail": "The heading reads \"THE EXTENED DAY PROGRAM\" and the page is photos only, with no hours, ages or how to join."
+    }
+  ],
+  "images": [
+    {
+      "src": "/p/img/share-desktop.jpg",
+      "alt": "Concept of a new SHARE of Coastal Georgia homepage on a laptop",
+      "caption": "Homepage concept. Booking an evaluation, applying to DEAR and donating are each one click away. Highlighted items are details I'd confirm with you."
+    },
+    {
+      "src": "/p/img/share-phone.jpg",
+      "alt": "The same homepage concept on a phone",
+      "caption": "The same page on a phone, where most families will see it.",
+      "phone": true
+    }
+  ],
+  "outcome": "A new, mobile-friendly site where booking a speech evaluation, applying to DEAR and donating each take one click. Current schedules, hours on every page, no builder ads, and an easy way for your staff to post news and update dates themselves.",
+  "timeline": "About 3 to 4 weeks from kickoff to launch, once we have your logo, photos and program details.",
+  "package": [
+    {
+      "id": "website-standard",
+      "locked": true,
+      "note": "A new site of up to 10 pages: home, Speech & Hearing, DEAR, Extended Day, Sharing Club, donate, ornaments, news, about and contact. Includes help writing page copy, connecting your domain, and setup so your staff can edit."
+    }
+  ],
+  "addons": [
+    {
+      "id": "digital-presence",
+      "note": "Get your hours, phone and photos right on Google and Apple Maps, plus a review link families can use."
+    },
+    {
+      "id": "care-plan",
+      "note": "Updates, backups and an hour of edits each month, like posting the new DEAR calendar or ornament sale."
+    }
+  ]
+}
