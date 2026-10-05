@@ -33,7 +33,7 @@ Colors, fonts and logo rules live in the Brackish brand guide. Fonts are self-ho
 
 Each prospect gets a private page at `/p/<slug>`, for example `/p/habitat-351bhb`. The page has four steps: what I found, build your package, review and accept, and pay the deposit.
 
-- **Add a prospect:** copy `p/data/habitat-351bhb.json` to `p/data/<new-slug>.json` and edit it. Put concept images in `p/img/`. Use a random suffix in the slug so it can't be guessed.
+- **Add a prospect:** copy `p/data/habitat-351bhb.json` to `p/data/<new-slug>.json` and edit it, then copy `p/proposal.html` to `p/<new-slug>.html`. Put concept images in `p/img/`. Use a random suffix in the slug so it can't be guessed. (If you change `p/proposal.html`, copy it over each prospect's page too.)
 - **Prices** live in `data/prices.json`. Proposal pages and the deposit checkout both read from it. A proposal can override an item's price with `"price"`.
 - **Acceptance** is sent to Formspree with the signer's name, title, email, package, totals and timestamp.
 - **Deposits** go through Stripe Checkout via `api/checkout.js`, which recalculates the amount on the server. It needs the `STRIPE_SECRET_KEY` environment variable in Vercel. Without it, the page tells the client you'll email an invoice instead.
