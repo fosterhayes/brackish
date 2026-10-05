@@ -26,8 +26,8 @@
       "detail": "In the footer, \"Community Center\" opens the Commemorative Walkway page."
     },
     {
-      "title": "Donations run through a Gmail address, with a typo.",
-      "detail": "The PayPal button sends gifts to givvi31520@gmail.com, and the message donors see reads \"Thank you for suppporting GIVVI.\""
+      "title": "Donations go to a Gmail address.",
+      "detail": "The PayPal button sends gifts to givvi31520@gmail.com rather than an account in the Village's name, which can make careful donors hesitate."
     },
     {
       "title": "Small errors add up.",
