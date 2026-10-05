@@ -14,11 +14,16 @@ function readJson(...parts) {
 }
 
 module.exports = async function handler(req, res) {
+  const key = (process.env.STRIPE_SECRET_KEY || "").trim();
+  if (req.method === "GET") {
+    // Status check only: never reveals the key itself.
+    const mode = key.startsWith("sk_test_") ? "test" : key.startsWith("sk_live_") ? "live" : key.startsWith("rk_") ? "restricted" : key ? "unrecognized" : "missing";
+    return res.status(200).json({ configured: !!key, keyType: mode });
+  }
   if (req.method !== "POST") {
-    res.setHeader("Allow", "POST");
+    res.setHeader("Allow", "POST, GET");
     return res.status(405).json({ error: "method_not_allowed" });
   }
-  const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return res.status(503).json({ error: "payments_not_configured" });
 
   let body = req.body || {};
@@ -66,7 +71,7 @@ module.exports = async function handler(req, res) {
     const data = await r.json();
     if (!r.ok || !data.url) {
       console.error("Stripe error", r.status, data && data.error && data.error.message);
-      return res.status(502).json({ error: "stripe_error" });
+      return res.status(502).json({ error: "stripe_error", stripeStatus: r.status, stripeCode: (data && data.error && (data.error.code || data.error.type)) || null });
     }
     return res.status(200).json({ url: data.url });
   } catch (e) {

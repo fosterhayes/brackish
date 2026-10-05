@@ -199,8 +199,9 @@
         if (res.ok && res.j.url) { location.href = res.j.url; return; }
         throw res.j;
       })
-      .catch(function () {
-        status.textContent = "Online payment isn't available right now. No problem: I'll email your deposit invoice within one business day.";
+      .catch(function (err) {
+        if (err && err.error) console.warn("Deposit checkout unavailable:", err);
+        status.textContent = "Online payment isn't available right now. No problem: I'll email your deposit invoice within one business day." + (err && err.error ? " (ref: " + err.error + (err.stripeCode ? "/" + err.stripeCode : "") + ")" : "");
         status.classList.add("ok"); btn.disabled = false;
       });
   });
