@@ -1,0 +1,65 @@
+{
+  "slug": "gec-ohzio7",
+  "org": "Glynn Environmental Coalition",
+  "greeting": "Hi there",
+  "preparedOn": "October 4, 2026",
+  "validUntil": "November 3, 2026",
+  "headline": "Your work is making news. Let's make it easier to share.",
+  "intro": "From the Twitty Park lawsuit to Georgia's first Superfund Research Center, 2026 has been a big year for GEC. Your website is in good shape, so I'm not going to pitch you a new one. Instead, I'd help your team turn every announcement and technical report into steady, plain-language posts without adding hours to anyone's week.",
+  "working": [
+    "An up-to-date events calendar with RSVP links",
+    "Press releases and news coverage posted regularly",
+    "Clear ways to act: report air problems, donate, volunteer",
+    "Named staff and board, and a story that goes back to 1990"
+  ],
+  "findings": [
+    {
+      "title": "Big news arrives in bursts.",
+      "detail": "Nine of this year's 13 news items came out in a single week in June, around the Superfund Research Center announcement. Each one could have become a week of posts, a newsletter story and an explainer."
+    },
+    {
+      "title": "The Superfund page doesn't name the sites.",
+      "detail": "It says Glynn County is home to 4 of Georgia's 16 Superfund sites, but doesn't name them or link to any reports, just as the new research center is drawing attention to them."
+    },
+    {
+      "title": "Technical topics need plain language.",
+      "detail": "Air quality, seafood safety and Superfund cleanups come with dense EPA and EPD documents. AI tools can draft plain-language summaries for your team to check, so more residents understand what's at stake."
+    },
+    {
+      "title": "The LinkedIn icon goes nowhere.",
+      "detail": "It appears on every page with no link. Linking your LinkedIn page or removing the icon is a two-minute fix in Wix, and I'm glad to show you how at no charge."
+    }
+  ],
+  "images": [
+    {
+      "src": "/p/img/gec-desktop.jpg",
+      "alt": "Example showing one GEC press release turned into an Instagram caption, Facebook post, newsletter story and plain-language explainer",
+      "caption": "What the press-release tool would produce: four drafts from one announcement, ready for your team to review."
+    },
+    {
+      "src": "/p/img/gec-phone.jpg",
+      "alt": "Example Instagram post titled What's a Superfund site?",
+      "caption": "An example explainer post built from your own materials.",
+      "phone": true
+    }
+  ],
+  "outcome": "Two AI tools set up for your team, plus a one-hour training. One turns each press release, report or event into ready-to-review social posts and a newsletter story. The other drafts plain-language explainers from technical documents. Your staff reviews everything before it's published, and nothing confidential goes in.",
+  "timeline": "About 2 weeks from kickoff, including the training session.",
+  "package": [
+    {
+      "id": "ai-quickstart",
+      "locked": true,
+      "note": "A press-release-to-posts assistant and a plain-language explainer assistant, set up with your voice, your facts and your review steps, plus a 1-hour team training and a written how-to guide."
+    }
+  ],
+  "addons": [
+    {
+      "id": "social-essentials",
+      "note": "I write and schedule 8 posts a month on 2 platforms from your news and events, so your team only has to approve them."
+    },
+    {
+      "id": "digital-presence",
+      "note": "Make sure your Google listing, Facebook and Instagram all share the same up-to-date information and links."
+    }
+  ]
+}
