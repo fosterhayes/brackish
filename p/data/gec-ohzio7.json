@@ -4,8 +4,8 @@
   "greeting": "Hi there",
   "preparedOn": "October 4, 2026",
   "validUntil": "November 3, 2026",
-  "headline": "Your work is making news. Let's make it easier to share.",
-  "intro": "From the Twitty Park lawsuit to Georgia's first Superfund Research Center, 2026 has been a big year for GEC. Your website is in good shape, so I'm not going to pitch you a new one. Instead, I'd help your team turn every announcement and technical report into steady, plain-language posts without adding hours to anyone's week.",
+  "headline": "Your work is making news. Your website should look like it.",
+  "intro": "From the Twitty Park lawsuit to Georgia's first Superfund Research Center, 2026 has been a big year for GEC. Your content is current and your calendar is full, but the design hasn't kept up, and your team is writing every post by hand. Here's a plan for both: a fresh, modern look on the Wix site you already have, and AI tools that turn each announcement into ready-to-review posts.",
   "working": [
     "An up-to-date events calendar with RSVP links",
     "Press releases and news coverage posted regularly",
@@ -13,6 +13,14 @@
     "Named staff and board, and a story that goes back to 1990"
   ],
   "findings": [
+    {
+      "title": "The design hasn't kept up with the work.",
+      "detail": "The homepage leans on menus and blocks of text, with few visuals to explain six program areas at a glance. Simple illustrations and icons would make the site feel as current as your news."
+    },
+    {
+      "title": "Small details undercut a strong site.",
+      "detail": "The About Us page lists a \"Seafood Outreach Assitant,\" and the LinkedIn icon on every page has no link."
+    },
     {
       "title": "Big news arrives in bursts.",
       "detail": "Nine of this year's 13 news items came out in a single week in June, around the Superfund Research Center announcement. Each one could have become a week of posts, a newsletter story and an explainer."
@@ -24,28 +32,35 @@
     {
       "title": "Technical topics need plain language.",
       "detail": "Air quality, seafood safety and Superfund cleanups come with dense EPA and EPD documents. AI tools can draft plain-language summaries for your team to check, so more residents understand what's at stake."
-    },
-    {
-      "title": "The LinkedIn icon goes nowhere.",
-      "detail": "It appears on every page with no link. Linking your LinkedIn page or removing the icon is a two-minute fix in Wix, and I'm glad to show you how at no charge."
     }
   ],
   "images": [
     {
-      "src": "/p/img/gec-desktop.jpg",
-      "alt": "Example showing one GEC press release turned into an Instagram caption, Facebook post, newsletter story and plain-language explainer",
-      "caption": "What the press-release tool would produce: four drafts from one announcement, ready for your team to review."
+      "src": "/p/img/gec-site.jpg",
+      "alt": "Concept of a refreshed Glynn Environmental Coalition homepage with a coastal illustration and program icons",
+      "caption": "Homepage concept for your current Wix site: a custom coastal illustration, an icon for each program, and news and events up front. Built from your real content."
     },
     {
       "src": "/p/img/gec-phone.jpg",
       "alt": "Example Instagram post titled What's a Superfund site?",
       "caption": "An example explainer post built from your own materials.",
       "phone": true
+    },
+    {
+      "src": "/p/img/gec-desktop.jpg",
+      "alt": "Example showing one GEC press release turned into an Instagram caption, Facebook post, newsletter story and plain-language explainer",
+      "caption": "What the press-release tool would produce: four drafts from one announcement, ready for your team to review."
     }
   ],
-  "outcome": "Two AI tools set up for your team, plus a one-hour training. One turns each press release, report or event into ready-to-review social posts and a newsletter story. The other drafts plain-language explainers from technical documents. Your staff reviews everything before it's published, and nothing confidential goes in.",
-  "timeline": "About 2 weeks from kickoff, including the training session.",
+  "outcome": "A refreshed Wix site with a modern design, custom coastal illustrations and icons for each program, a Superfund page that names the sites, and every typo and dead link fixed. Plus two AI tools and a one-hour training: one turns each press release into ready-to-review posts and a newsletter story, the other drafts plain-language explainers. Your team reviews everything before it's published.",
+  "timeline": "About 3 weeks from kickoff to launch, including the AI training session.",
   "package": [
+    {
+      "id": "website-refresh",
+      "price": 1250,
+      "locked": true,
+      "note": "A new design for your current Wix site: homepage, program pages and About Us, custom illustrations and program icons, a Superfund page that names each site, and every typo and dead link fixed. Your team keeps editing in Wix."
+    },
     {
       "id": "ai-quickstart",
       "locked": true,
