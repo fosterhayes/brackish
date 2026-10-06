@@ -81,6 +81,12 @@
     proposal.package.forEach(function (p) { selected[p.id] = true; });
     proposal.addons.forEach(function (a) { selected[a.id] = !!(saved && saved.indexOf(a.id) > -1); });
     var opts = $("p-options");
+    if (proposal.discount && proposal.discount.percent > 0) {
+      var ban = el("div", { "class": "p-discount" });
+      ban.appendChild(el("strong", {}, (proposal.discount.name || "Discount") + ": " + proposal.discount.percent + "% off"));
+      if (proposal.discount.note) ban.appendChild(el("span", {}, proposal.discount.note));
+      opts.parentNode.parentNode.insertBefore(ban, opts.parentNode);
+    }
     proposal.package.concat(proposal.addons).forEach(function (p) {
       var item = catalog.items[p.id]; if (!item) return;
       var price = typeof p.price === "number" ? p.price : item.price;
@@ -92,7 +98,15 @@
       var body = el("span", { "class": "p-option-body" });
       var top = el("span", { "class": "p-option-top" });
       top.appendChild(el("strong", {}, item.name));
-      top.appendChild(el("span", { "class": "p-option-price" }, money(price) + (item.billing === "monthly" ? " / month" : "")));
+      var priceEl = el("span", { "class": "p-option-price" });
+      var d = proposal.discount;
+      if (d && d.percent > 0 && item.billing !== "monthly" && (!d.items || d.items.indexOf(p.id) > -1)) {
+        priceEl.appendChild(el("s", { "class": "p-was" }, money(price)));
+        priceEl.appendChild(document.createTextNode(" " + money(Math.round(price * (100 - d.percent)) / 100)));
+      } else {
+        priceEl.textContent = money(price) + (item.billing === "monthly" ? " / month" : "");
+      }
+      top.appendChild(priceEl);
       body.appendChild(top);
       if (p.locked) body.appendChild(el("span", { "class": "p-tag", id: "rec-" + p.id }, "Recommended · included"));
       body.appendChild(el("span", { "class": "p-option-note" }, p.note || item.summary));
@@ -137,7 +151,7 @@
   function linesInto(container, q) {
     container.textContent = "";
     q.lines.forEach(function (l) {
-      var row = el("div", { "class": "p-row" });
+      var row = el("div", { "class": "p-row" + (l.discount ? " p-row-discount" : "") });
       row.appendChild(el("span", {}, l.name)); row.appendChild(el("span", {}, money(l.price)));
       container.appendChild(row);
     });

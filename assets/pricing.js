@@ -45,10 +45,18 @@
       }
     });
 
+    // Optional per-proposal discount, e.g. {"name": "Founding partner discount", "percent": 50, "items": ["website-standard"]}
+    var d = proposal.discount;
+    if (d && d.percent > 0) {
+      var base = lines.reduce(function (s, l) { return s + ((!d.items || d.items.indexOf(l.id) > -1) && l.price > 0 ? l.price : 0); }, 0);
+      var off = Math.round(base * d.percent) / 100;
+      if (off > 0) lines.push({ id: "discount", name: (d.name || "Discount") + " (" + d.percent + "% off)", price: -off, billing: "once", discount: true });
+    }
     var once = lines.reduce(function (s, l) { return s + l.price; }, 0);
     var perMonth = monthly.reduce(function (s, l) { return s + l.price; }, 0);
     var deposit = Math.round(once * (catalog.depositRate || 0.5) * 100) / 100;
-    return { lines: lines, monthly: monthly, once: once, perMonth: perMonth, deposit: deposit, items: Object.keys(seen) };
+    var savings = lines.reduce(function (s, l) { return s + (l.discount ? -l.price : 0); }, 0);
+    return { lines: lines, monthly: monthly, once: once, savings: savings, perMonth: perMonth, deposit: deposit, items: Object.keys(seen) };
   }
 
   var api = { quote: quote };

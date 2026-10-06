@@ -65,5 +65,13 @@
       "id": "care-plan",
       "note": "Updates, backups and an hour of edits each month, like posting the new DEAR calendar or ornament sale."
     }
-  ]
+  ],
+  "discount": {
+    "name": "Founding partner discount",
+    "percent": 50,
+    "items": [
+      "website-standard"
+    ],
+    "note": "I believe in SHARE's mission, so I'm taking half off your new website as one of Brackish's founding partners. All I ask in return is permission to feature the project and, if you're happy with the result, a short testimonial."
+  }
 }
