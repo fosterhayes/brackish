@@ -5,6 +5,7 @@
     "website-starter": { "name": "Starter Website", "price": 1500, "billing": "once", "summary": "Up to 5 pages, mobile-friendly design, contact form, basic SEO and analytics, 30 days of fixes after launch." },
     "website-standard": { "name": "Standard Website", "price": 2500, "billing": "once", "summary": "Up to 10 pages, events or news section, donations or online booking, help writing page copy." },
     "website-refresh": { "name": "Website Refresh", "price": 750, "billing": "once", "summary": "A new look and cleaner pages for your current site, on the platform you already use." },
+    "brand-refresh": { "name": "Brand Refresh", "price": 500, "billing": "once", "summary": "A refreshed logo, color palette and fonts, plus a one-page brand guide and logo files for web, print and social." },
     "digital-audit": { "name": "Digital Audit", "price": 250, "billing": "once", "summary": "Written review of your listings, profiles, reviews and website basics, with a fix list." },
     "digital-presence": { "name": "Digital Presence Refresh", "price": 750, "billing": "once", "summary": "Google Business Profile, social profiles, Apple Maps and Yelp cleaned up, plus a review link and QR code." },
     "ai-session": { "name": "AI Opportunity Session", "price": 350, "billing": "once", "summary": "60-minute working session and a written list of your top 5 time-saving AI opportunities." },

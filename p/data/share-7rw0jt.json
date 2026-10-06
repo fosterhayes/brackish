@@ -58,6 +58,10 @@
   ],
   "addons": [
     {
+      "id": "brand-refresh",
+      "note": "Bring your website, social media, signs and printed materials into one consistent look. A refreshed version of your current logo (not a replacement), your colors and fonts, a one-page brand guide, and logo files for web, print and social."
+    },
+    {
       "id": "digital-presence",
       "note": "Get your hours, phone and photos right on Google and Apple Maps, plus a review link families can use."
     },
@@ -70,8 +74,9 @@
     "name": "Founding partner discount",
     "percent": 50,
     "items": [
-      "website-standard"
+      "website-standard",
+      "brand-refresh"
     ],
-    "note": "I believe in SHARE's mission, so I'm taking half off your new website as one of Brackish's founding partners. All I ask in return is permission to feature the project and, if you're happy with the result, a short testimonial."
+    "note": "I believe in SHARE's mission, so I'm taking half off your new website, and the optional brand refresh, as one of Brackish's founding partners. All I ask in return is permission to feature the project and, if you're happy with the result, a short testimonial."
   }
 }
