@@ -118,6 +118,19 @@
     accepted = !!store.get("accepted");
     update();
     var start = parseInt(params.get("step"), 10);
+    if (params.get("paid") === "1") {
+      accepted = true; store.set("accepted", true);
+      if (!store.get("cardNotified")) {
+        store.set("cardNotified", true);
+        var signer = store.get("signer") || {}, n = new FormData();
+        n.append("_subject", "Deposit PAID by card: " + proposal.org);
+        n.append("type", "deposit-paid-card"); n.append("organization", proposal.org); n.append("proposal", slug);
+        n.append("name", signer.name || ""); n.append("email", signer.email || "");
+        n.append("stripe_session", params.get("session_id") || ""); n.append("paid_at", new Date().toISOString());
+        postForm(n).catch(function () {});
+      }
+      store.set("sent", "Card");
+    }
     if (store.get("sent")) { accepted = true; show(4, true); showSent(); }
     else show(start >= 1 && start <= 4 ? start : 1, true);
   }
@@ -133,20 +146,38 @@
     if (clean(payment.zelle)) list.push({ id: "Zelle", detail: "Send to " + clean(payment.zelle) + " from your bank's app" });
     if (clean(payment.checkPayableTo)) list.push({ id: "Check", detail: "Payable to " + clean(payment.checkPayableTo) + ". " + (clean(payment.checkMailTo) ? "Mail to " + clean(payment.checkMailTo) + "." : "I'll email you the mailing address.") });
     var box = $("p-methods");
-    list.forEach(function (m) {
-      var label = el("label", { "class": "p-method" });
+    function addMethod(m, first) {
+      var label = el("label", { "class": "p-method" + (m.card ? " p-method-card" : "") });
       var r = el("input", { type: "radio", name: "pay-method", value: m.id });
-      r.addEventListener("change", function () { method = m.id; $("sent-btn").disabled = false; var st = $("pay-status"); st.textContent = ""; st.className = "form-status"; });
+      r.addEventListener("change", function () {
+        method = m.id;
+        var b = $("sent-btn"); b.disabled = false;
+        b.textContent = m.card ? "Pay " + money(current.deposit) + " securely" : "I've sent the deposit";
+        var st = $("pay-status"); st.textContent = ""; st.className = "form-status";
+      });
       var body = el("span", { "class": "p-method-body" });
-      body.appendChild(el("strong", {}, m.id));
+      body.appendChild(el("strong", {}, m.label || m.id));
       var d = el("span", {}, m.detail + " ");
       if (m.href) d.appendChild(el("a", { href: m.href, target: "_blank", rel: "noopener" }, "Open " + m.id));
       body.appendChild(d);
-      label.appendChild(r); label.appendChild(body); box.appendChild(label);
-    });
+      label.appendChild(r); label.appendChild(body);
+      if (first && box.firstChild) box.insertBefore(label, box.firstChild); else box.appendChild(label);
+    }
+    list.forEach(function (m) { addMethod(m); });
+    fetch("/api/checkout").then(function (r) { return r.ok ? r.json() : {}; }).then(function (j) {
+      if (j && j.configured) addMethod({ id: "Card", label: "Card or bank account", card: true, detail: "Pay securely online through Stripe. You'll get an emailed receipt right away." }, true);
+    }).catch(function () {});
   }
 
-  function showSent() { $("p-paid").hidden = false; $("p-pay-ready").hidden = true; $("p-pay-locked").hidden = true; }
+  function showSent() {
+    $("p-paid").hidden = false; $("p-pay-ready").hidden = true; $("p-pay-locked").hidden = true;
+    if (store.get("sent") === "Card") {
+      var box = $("p-paid");
+      box.querySelector(".eyebrow").textContent = "Deposit received";
+      box.querySelector("h3").textContent = "You're on the calendar.";
+      box.querySelector("p:not(.eyebrow)").textContent = "Thank you! Stripe has emailed your receipt. I'll be in touch within one business day to schedule our kickoff.";
+    }
+  }
 
   function linesInto(container, q) {
     container.textContent = "";
@@ -240,6 +271,22 @@
   $("sent-btn").addEventListener("click", function () {
     if (!method) return;
     var btn = this, status = $("pay-status"), signer = store.get("signer") || {};
+    if (method === "Card") {
+      btn.disabled = true; status.className = "form-status"; status.textContent = "Opening secure checkout…";
+      fetch("/api/checkout", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: slug, items: current.items, name: signer.name || "", email: signer.email || "" })
+      }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (res.ok && res.j.url) { location.href = res.j.url; return; }
+          throw res.j || {};
+        })
+        .catch(function (err) {
+          status.textContent = "Card payment isn't available right now. Please choose another option above, or email foster@hellobrackish.com." + (err && err.error ? " (ref: " + err.error + (err.stripeCode ? "/" + err.stripeCode : "") + ")" : "");
+          status.classList.add("err"); btn.disabled = false;
+        });
+      return;
+    }
     btn.disabled = true; status.className = "form-status"; status.textContent = "Letting Foster know…";
     var data = new FormData();
     data.append("_subject", "Deposit sent (" + method + "): " + proposal.org);

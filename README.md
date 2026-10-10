@@ -40,4 +40,4 @@ Each prospect gets a private page at `/p/<slug>`, for example `/p/habitat-351bhb
 - Proposal pages are hidden from search engines (`noindex` header, `robots.txt`).
 
 ### Deposit payment options
-Proposal pages show the payment options listed in `data/payment.json` (Venmo, Cash App, Zelle, check). Leave a value empty to hide that option. When a client clicks "I've sent the deposit," you get a Formspree email naming the method they used. The Stripe checkout code in `api/checkout.js` stays in the repo but isn't used right now.
+Proposal pages show the payment options listed in `data/payment.json` (Venmo, Cash App, Zelle, check). Leave a value empty to hide that option. When a client clicks "I've sent the deposit," you get a Formspree email naming the method they used. Card payment through Stripe appears as a fifth option automatically once `STRIPE_SECRET_KEY` is set in Vercel (Production) and the site is redeployed; without the key it stays hidden.
